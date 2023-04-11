@@ -1,9 +1,10 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, TouchableHighlight } from 'react-native';
 
 function AppButton({ title, color, textColor, border }) {
     return (
-        <View
+        <TouchableHighlight
+            onPress={() => {}}
             style={{
                 alignItems: 'center',
                 backgroundColor: color,
@@ -18,14 +19,14 @@ function AppButton({ title, color, textColor, border }) {
         >
             <Text
                 style={{
+                    color: textColor,
                     fontSize: 20,
                     letterSpacing: 3,
-                    color: textColor,
                 }}
             >
                 {title}
             </Text>
-        </View>
+        </TouchableHighlight>
     );
 }
 
