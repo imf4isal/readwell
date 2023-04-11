@@ -1,5 +1,6 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, StyleSheet } from 'react-native';
+import AppButton from '../components/AppButton';
 import colors from '../config/colors';
 
 function WelcomeScreen(props) {
@@ -8,11 +9,18 @@ function WelcomeScreen(props) {
             source={require('../assets/background-welcome.jpg')}
             style={styles.container}
         >
-            <View style={styles.loginButton}>
-                <Text style={styles.buttonText}>Button</Text>
-            </View>
-
-            <View style={styles.signupButton}></View>
+            <AppButton
+                title="LOG IN"
+                color={colors.primary}
+                textColor={colors.light}
+                borderColor={colors.primaryC}
+            />
+            <AppButton
+                title="SIGN UP"
+                color={colors.secondary}
+                textColor={colors.light}
+                borderColor={colors.secondaryC}
+            />
         </ImageBackground>
     );
 }
@@ -21,19 +29,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'flex-end',
+        padding: 20,
     },
-    loginButton: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        height: 80,
-        backgroundColor: colors.primary,
-    },
-    buttonText: {
-        color: 'white',
-        fontSize: 20,
-        letterSpacing: 3,
-    },
+
     signupButton: {
         width: '100%',
         height: 80,
