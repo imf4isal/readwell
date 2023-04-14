@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
-import WelcomeScreen from './app/screen/WelcomeScreen';
+import ProductImageScreen from './app/screen/ProductImageScreen';
 
 export default function App() {
-    return <WelcomeScreen />;
+    return <ProductImageScreen />;
 }
 
 const styles = StyleSheet.create({});
