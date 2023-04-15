@@ -1,20 +1,38 @@
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 
 import colors from '../config/colors';
 import AppButtonSmall from './AppButtonSmall';
 
-function AltCard({ title, subtitle, image }) {
+function AltCard({ title, subtitle, image, writer }) {
     return (
         <View style={styles.container}>
             <Image source={image} style={styles.image} />
             <View style={styles.detailContainer}>
-                <Text style={styles.title}>{title}</Text>
-                <Text style={styles.subtitle}>{subtitle}</Text>
+                <View style={styles.detail}>
+                    <View style={{ marginBottom: 10 }}>
+                        <View style={{ marginBottom: 5 }}>
+                            <Text style={styles.title}>{title}</Text>
+                            <Text style={styles.subtitle}>{writer}</Text>
+                        </View>
+                        <View style={{ flexDirection: 'row' }}>
+                            <MaterialCommunityIcons
+                                style={{ marginVertical: 4, marginRight: 10 }}
+                                name="check"
+                                color={colors.grey}
+                            />
+                            <Text style={styles.subtitle}>
+                                Available to rent.
+                            </Text>
+                        </View>
+                    </View>
+                    {/* <Text style={styles.subtitle}>{subtitle}</Text> */}
+                </View>
             </View>
             <View style={styles.buttonContainer}>
                 <AppButtonSmall title="Rent" color={colors.primary} />
-                <AppButtonSmall title="Buy" color={colors.secondary} />
+                <AppButtonSmall title="Detail" color={colors.secondary} />
             </View>
         </View>
     );
@@ -33,7 +51,6 @@ const styles = StyleSheet.create({
     },
     detailContainer: {
         padding: 10,
-        marginBottom: 5,
     },
     image: {
         width: '100%',

@@ -11,7 +11,7 @@ export default function App() {
                 subtitle="BDT 200"
                 image={require('./app/assets/products/organizedbook.jpg')}
             /> */}
-            <CardAlt
+            {/* <CardAlt
                 title="The Subtle Art of Not Giving a Fuck"
                 subtitle="BDT 200"
                 image={require('./app/assets/products/organizedbook.jpg')}
@@ -20,13 +20,32 @@ export default function App() {
                 title="The Subtle Art of Not Giving a Fuck"
                 subtitle="BDT 200"
                 image={require('./app/assets/products/organizedbook.jpg')}
-            />
+            /> */}
 
-            <AltCard
-                title="The Subtle Art of Not Giving a Fuck"
+            <CardAlt
+                title="Atomic Habit"
+                writer="James Clear"
                 subtitle="BDT 200"
-                image={require('./app/assets/products/organizedbook.jpg')}
+                image={require('./app/assets/products/atomicHabit.jpg')}
             />
+            <Card
+                title="Milk and Honey"
+                writer="Rupi Kaur"
+                subtitle="BDT 200"
+                image={require('./app/assets/products/milkandhoney.jpg')}
+            />
+            <AltCard
+                title="Zero to one"
+                writer="Peter Theil"
+                subtitle="BDT 200"
+                image={require('./app/assets/products/book.jpg')}
+            />
+            {/* <Card
+                title="Atomic Habit"
+                writer="James Clear"
+                subtitle="BDT 200"
+                image={require('./app/assets/products/atomicHabit.jpg')}
+            /> */}
         </ScrollView>
     );
 }
