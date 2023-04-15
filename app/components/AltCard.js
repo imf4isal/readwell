@@ -2,6 +2,7 @@ import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 
 import colors from '../config/colors';
+import AppButtonSmall from './AppButtonSmall';
 
 function AltCard({ title, subtitle, image }) {
     return (
@@ -9,19 +10,26 @@ function AltCard({ title, subtitle, image }) {
             <Image source={image} style={styles.image} />
             <View style={styles.detailContainer}>
                 <Text style={styles.title}>{title}</Text>
-                <Text>{subtitle}</Text>
+                <Text style={styles.subtitle}>{subtitle}</Text>
+            </View>
+            <View style={styles.buttonContainer}>
+                <AppButtonSmall title="Rent" color={colors.primary} />
+                <AppButtonSmall title="Buy" color={colors.secondary} />
             </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
+    buttonContainer: {
+        flexDirection: 'row',
+    },
     container: {
         backgroundColor: colors.light,
         borderRadius: 10,
-        margin: 20,
-        marginTop: 100,
+        margin: 15,
         overflow: 'hidden',
+        paddingBottom: 10,
     },
     detailContainer: {
         padding: 10,
@@ -32,8 +40,12 @@ const styles = StyleSheet.create({
         height: 200,
     },
     title: {
+        fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 5,
+    },
+    subtitle: {
+        color: colors.grey,
     },
 });
 
