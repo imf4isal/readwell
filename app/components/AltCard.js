@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: colors.light,
         borderRadius: 10,
-        margin: 15,
+        margin: 10,
         overflow: 'hidden',
         paddingBottom: 10,
     },

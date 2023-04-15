@@ -1,24 +1,27 @@
 import { ScrollView, StyleSheet } from 'react-native';
 import AltCard from './app/components/AltCard';
+import Card from './app/components/Card';
+import CardAlt from './app/components/CardAlt';
 
 export default function App() {
     return (
         <ScrollView style={styles.container}>
-            <AltCard
+            {/* <CardAlt
+                title="The Subtle Art of Not Giving a Fuck"
+                subtitle="BDT 200"
+                image={require('./app/assets/products/organizedbook.jpg')}
+            /> */}
+            <CardAlt
                 title="The Subtle Art of Not Giving a Fuck"
                 subtitle="BDT 200"
                 image={require('./app/assets/products/organizedbook.jpg')}
             />
-            <AltCard
+            <Card
                 title="The Subtle Art of Not Giving a Fuck"
                 subtitle="BDT 200"
                 image={require('./app/assets/products/organizedbook.jpg')}
             />
-            <AltCard
-                title="The Subtle Art of Not Giving a Fuck"
-                subtitle="BDT 200"
-                image={require('./app/assets/products/organizedbook.jpg')}
-            />
+
             <AltCard
                 title="The Subtle Art of Not Giving a Fuck"
                 subtitle="BDT 200"
