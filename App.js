@@ -1,9 +1,9 @@
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import AltCard from './app/components/AltCard';
 
 export default function App() {
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <AltCard
                 title="The Subtle Art of Not Giving a Fuck"
                 subtitle="BDT 200"
@@ -24,7 +24,7 @@ export default function App() {
                 subtitle="BDT 200"
                 image={require('./app/assets/products/organizedbook.jpg')}
             />
-        </View>
+        </ScrollView>
     );
 }
 
