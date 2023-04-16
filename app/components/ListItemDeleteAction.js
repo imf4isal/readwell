@@ -2,18 +2,21 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { TouchableWithoutFeedback } from 'react-native';
 import colors from '../config/colors';
 
-function ListItemDeleteAction(props) {
+function ListItemDeleteAction({ onPress }) {
     return (
-        <View style={styles.container}>
-            <MaterialCommunityIcons
-                style={styles.icon}
-                name="trash-can"
-                size={40}
-                color={colors.primary}
-            />
-        </View>
+        <TouchableWithoutFeedback onPress={onPress}>
+            <View style={styles.container}>
+                <MaterialCommunityIcons
+                    style={styles.icon}
+                    name="trash-can"
+                    size={40}
+                    color={colors.primary}
+                />
+            </View>
+        </TouchableWithoutFeedback>
     );
 }
 const styles = StyleSheet.create({
