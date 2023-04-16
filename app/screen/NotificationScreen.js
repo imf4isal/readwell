@@ -77,7 +77,6 @@ function NotificationScreen(props) {
                 },
             ]
         );
-        // setNotification([]);
     };
 
     return (

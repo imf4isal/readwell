@@ -1,8 +1,14 @@
 import { StyleSheet } from 'react-native';
-import NotificationScreen from './app/screen/NotificationScreen';
+
+import AppTextInput from './app/components/AppTextInput';
+import Screen from './app/components/Screen';
 
 export default function App() {
-    return <NotificationScreen />;
+    return (
+        <Screen>
+            <AppTextInput icon="email" placeholder="Email Address" />
+        </Screen>
+    );
 }
 
 const styles = StyleSheet.create({});
