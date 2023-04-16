@@ -30,11 +30,13 @@ function ListItem({
                     <View style={styles.container}>
                         {IconComponent}
                         {image && (
-                            <Image
-                                style={styles.image}
-                                source={image}
-                                resizeMode="contain"
-                            />
+                            <View style={styles.imageContainer}>
+                                <Image
+                                    style={styles.image}
+                                    source={image}
+                                    resizeMode="contain"
+                                />
+                            </View>
                         )}
                         <View style={styles.detailContainer}>
                             <Text style={styles.title}>{title}</Text>
@@ -59,6 +61,7 @@ const styles = StyleSheet.create({
         flex: 1,
         marginLeft: 15,
     },
+    imageContainer: { elevation: 15, borderRadius: 20 },
     image: {
         width: 70,
         height: 70,

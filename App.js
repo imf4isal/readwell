@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
-import ProfileScreen from './app/screen/ProfileScreen';
+import NotificationScreen from './app/screen/NotificationScreen';
 
 export default function App() {
-    return <ProfileScreen />;
+    return <NotificationScreen />;
 }
 
 const styles = StyleSheet.create({});

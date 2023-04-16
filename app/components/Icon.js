@@ -13,6 +13,7 @@ function Icon({ name, color = 'white', backgroundColor = 'black', size = 50 }) {
                 backgroundColor,
                 justifyContent: 'center',
                 alignItems: 'center',
+                elevation: 10,
             }}
         >
             <MaterialCommunityIcons
