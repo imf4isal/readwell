@@ -1,16 +1,8 @@
-import { StyleSheet, View } from 'react-native';
-import ListItem from './app/components/ListItem';
+import { StyleSheet } from 'react-native';
+import MessageScreen from './app/screen/MessageScreen';
 
 export default function App() {
-    return (
-        <View style={styles.container}>
-            <ListItem
-                image={require('./app/assets/people.jpg')}
-                title="Faisal"
-                subTitle="faisalabdullah@gmail.com"
-            />
-        </View>
-    );
+    return <MessageScreen />;
 }
 
 const styles = StyleSheet.create({
