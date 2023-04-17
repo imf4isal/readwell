@@ -1,9 +1,9 @@
 import { Text, TouchableHighlight } from 'react-native';
 
-function AppButton({ title, color, textColor, border, style }) {
+function AppButton({ title, color, textColor, border, style, onPress }) {
     return (
         <TouchableHighlight
-            onPress={() => {}}
+            onPress={onPress}
             style={[
                 {
                     alignItems: 'center',
