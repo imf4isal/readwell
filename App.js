@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native';
 
-import AppTextInput from './app/components/AppTextInput';
+import AppPicker from './app/components/AppPicker';
 import Screen from './app/components/Screen';
 
 export default function App() {
     return (
         <Screen>
-            <AppTextInput icon="email" placeholder="Email Address" />
+            <AppPicker icon="apps" placeholder="Category" />
         </Screen>
     );
 }
