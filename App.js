@@ -1,14 +1,9 @@
 import { StyleSheet } from 'react-native';
 
-import Screen from './app/components/Screen';
-import LoginScreen from './app/screen/LoginScreen';
+import ProductImageScreen from './app/screen/ProductImageScreen';
 
 export default function App() {
-    return (
-        <Screen>
-            <LoginScreen />
-        </Screen>
-    );
+    return <ProductImageScreen />;
 }
 
 const styles = StyleSheet.create({});

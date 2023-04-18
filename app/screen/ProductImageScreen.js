@@ -1,12 +1,21 @@
-import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
+
+import IconFloat from '../components/IconFloat';
 import colors from '../config/colors';
 
 function ProductImageScreen(props) {
     return (
         <View style={styles.container}>
-            <View style={styles.deleteButton} />
-            <View style={styles.closeButton} />
+            <IconFloat
+                color={colors.primaryC}
+                name="trash-can"
+                position={{ top: 50, left: 20 }}
+            />
+            <IconFloat
+                color={colors.light}
+                name="close"
+                position={{ top: 50, right: 20 }}
+            />
             <Image
                 resizeMode="contain"
                 style={styles.productimage}
@@ -20,22 +29,6 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: colors.dark,
         flex: 1,
-    },
-    deleteButton: {
-        height: 50,
-        width: 50,
-        backgroundColor: colors.primary,
-        position: 'absolute',
-        top: 60,
-        left: 20,
-    },
-    closeButton: {
-        height: 50,
-        width: 50,
-        backgroundColor: colors.secondary,
-        position: 'absolute',
-        top: 60,
-        right: 20,
     },
     productimage: {
         width: '100%',
