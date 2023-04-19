@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native';
 
-import ProductListScreen from './app/components/ProductListScreen';
 import Screen from './app/components/Screen';
+import LoginScreen from './app/screen/LoginScreen';
 
 export default function App() {
     return (
         <Screen>
-            <ProductListScreen />
+            <LoginScreen />
         </Screen>
     );
 }

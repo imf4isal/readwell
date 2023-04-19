@@ -1,26 +1,27 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../config/colors';
-import AppButton from '../AppButton';
 
 import { useFormikContext } from 'formik';
+
+import colors from '../../config/colors';
+import AppButton from '../AppButton';
 
 function SubmitButton({ title }) {
     const { handleSubmit } = useFormikContext();
 
     return (
         <AppButton
-            title={title}
             color={colors.primary}
-            textColor={colors.light}
-            style={styles.button}
             onPress={handleSubmit}
+            style={styles.button}
+            title={title}
+            textColor={colors.light}
         />
     );
 }
 
 const styles = StyleSheet.create({
     button: {
-        marginTop: 20,
+        marginVertical: 20,
     },
 });
 

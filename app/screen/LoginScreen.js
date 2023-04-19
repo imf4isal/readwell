@@ -1,10 +1,22 @@
-import { StyleSheet, View } from 'react-native';
+import {
+    Dimensions,
+    Image,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+} from 'react-native';
 
 import AppForm from '../components/form/AppForm';
 import AppFormField from '../components/form/AppFormField';
 import SubmitButton from '../components/form/SubmitButton';
 
+import { ImageBackground } from 'react-native';
 import * as Yup from 'yup';
+import colors from '../config/colors';
+
+const screenHeight = Dimensions.get('window').height;
+const screenWidth = Dimensions.get('window').width;
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label('Email'),
@@ -13,7 +25,25 @@ const validationSchema = Yup.object().shape({
 
 function LoginScreen(props) {
     return (
-        <View style={styles.container}>
+        <ImageBackground
+            source={require('../assets/loginback.png')}
+            resizeMode="stretch"
+            style={styles.container}
+        >
+            <View style={styles.logoContainer}>
+                <Image
+                    style={styles.logo}
+                    source={require('../assets/logo-readwell.png')}
+                    resizeMode="contain"
+                />
+            </View>
+            <View style={styles.heading}>
+                <Text style={styles.header}>Log In</Text>
+
+                <Text style={styles.subtitle}>
+                    Welcome back. You have been missed!
+                </Text>
+            </View>
             <AppForm
                 initialValues={{ email: '', password: '' }}
                 onSubmit={(values) => console.log(values)}
@@ -27,6 +57,7 @@ function LoginScreen(props) {
                     keyboardType="email-address"
                     placeholder="Email Address"
                     textContentType="emailAddress"
+                    focus
                 />
                 <AppFormField
                     name="password"
@@ -38,16 +69,57 @@ function LoginScreen(props) {
                     textContentType="password"
                 />
                 <SubmitButton title="Log In" />
+                <View style={styles.subtitleContainer}>
+                    <Text style={styles.subtitle}>Don't have an account?</Text>
+                    <TouchableOpacity
+                        onPress={() => console.log('Sign up pressed')}
+                    >
+                        <Text style={styles.signup}>Sign up</Text>
+                    </TouchableOpacity>
+                </View>
             </AppForm>
-        </View>
+        </ImageBackground>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 100,
-        verticalAlign: 'center',
-        padding: 20,
+        width: screenWidth,
+        height: screenHeight,
+        justifyContent: 'center',
+        padding: 15,
+    },
+    header: {
+        fontSize: 48,
+        fontWeight: 'bold',
+        color: colors.dark,
+        letterSpacing: 1,
+        marginBottom: 10,
+    },
+    heading: {
+        marginBottom: 60,
+        marginHorizontal: 10,
+    },
+    logo: { width: 100, height: 60 },
+    logoContainer: {
+        position: 'absolute',
+        top: 15,
+        left: 25,
+    },
+    subtitleContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+    subtitle: {
+        fontSize: 18,
+        letterSpacing: 1,
+    },
+    signup: {
+        fontSize: 18,
+        letterSpacing: 1,
+        color: colors.primary,
+        textDecorationLine: 'underline',
+        marginLeft: 5,
     },
 });
 
