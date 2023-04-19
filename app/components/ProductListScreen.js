@@ -1,7 +1,8 @@
 import { FlatList, StyleSheet } from 'react-native';
 
+import { useState } from 'react';
 import CardAlt from './CardAlt';
-import Screen from './Screen';
+import SearchBox from './SearchBox';
 
 const items = [
     {
@@ -42,10 +43,29 @@ const items = [
 ];
 
 function ProductListScreen(props) {
+    const [books, setBooks] = useState(items);
+
+    const searchBook = (val) => {
+        //selfnote:  we should filter from the initial books instead of books(state), because when we already search for one time, then the book set to a few book, then next time we search something else, it will search from that few book instead of whole dataset.
+
+        setBooks(
+            items.filter((book) => {
+                const bookTitle = book.title.toLowerCase();
+                const bookWriter = book.writer.toLowerCase();
+                const searchStr = val.toLowerCase();
+                return (
+                    bookTitle.includes(searchStr) ||
+                    bookWriter.includes(searchStr)
+                );
+            })
+        );
+    };
+
     return (
-        <Screen>
+        <>
+            <SearchBox search={(val) => searchBook(val)} />
             <FlatList
-                data={items}
+                data={books}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (
                     <CardAlt
@@ -55,7 +75,7 @@ function ProductListScreen(props) {
                     />
                 )}
             />
-        </Screen>
+        </>
     );
 }
 
