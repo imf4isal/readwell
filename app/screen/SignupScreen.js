@@ -94,7 +94,11 @@ function SignupScreen(props) {
                     placeholder="Confirm Password"
                     textContentType="password"
                 />
-                <SubmitButton title="Sign Up" color={colors.secondary} />
+                <SubmitButton
+                    title="Sign Up"
+                    color={colors.secondary}
+                    hoverColor={colors.secondaryB}
+                />
                 <View style={styles.subtitleContainer}>
                     <Text style={styles.subtitle}>
                         Already have an account?

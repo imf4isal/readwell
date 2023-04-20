@@ -5,7 +5,11 @@ import { useFormikContext } from 'formik';
 import colors from '../../config/colors';
 import AppButton from '../AppButton';
 
-function SubmitButton({ title, color = colors.primary }) {
+function SubmitButton({
+    title,
+    color = colors.primary,
+    hoverColor = colors.dark,
+}) {
     const { handleSubmit } = useFormikContext();
 
     return (
@@ -15,6 +19,7 @@ function SubmitButton({ title, color = colors.primary }) {
             style={styles.button}
             title={title}
             textColor={colors.light}
+            hoverColor={hoverColor}
         />
     );
 }

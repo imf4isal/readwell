@@ -68,7 +68,7 @@ function LoginScreen(props) {
                     placeholder="Password"
                     textContentType="password"
                 />
-                <SubmitButton title="Log In" />
+                <SubmitButton title="Log In" hoverColor={colors.primaryB} />
                 <View style={styles.subtitleContainer}>
                     <Text style={styles.subtitle}>Don't have an account?</Text>
                     <TouchableOpacity

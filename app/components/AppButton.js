@@ -1,6 +1,14 @@
 import { Text, TouchableHighlight } from 'react-native';
 
-function AppButton({ title, color, textColor, border, style, onPress }) {
+function AppButton({
+    border,
+    color,
+    hoverColor,
+    onPress,
+    style,
+    textColor,
+    title,
+}) {
     return (
         <TouchableHighlight
             onPress={onPress}
@@ -18,6 +26,7 @@ function AppButton({ title, color, textColor, border, style, onPress }) {
                 },
                 style,
             ]}
+            underlayColor={hoverColor}
         >
             <Text
                 style={{
