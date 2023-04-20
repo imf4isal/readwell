@@ -19,14 +19,19 @@ const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
 const validationSchema = Yup.object().shape({
+    fullName: Yup.string().required().label('Full Name'),
     email: Yup.string().required().email().label('Email'),
     password: Yup.string().required().min(4).label('Password'),
+    confirmPassword: Yup.string()
+        .required()
+        .oneOf([Yup.ref('password'), null], 'Password must be match')
+        .label('Confirm Password'),
 });
 
-function LoginScreen(props) {
+function SignupScreen(props) {
     return (
         <ImageBackground
-            source={require('../assets/loginback.png')}
+            source={require('../assets/signupback.png')}
             resizeMode="stretch"
             style={styles.container}
         >
@@ -38,17 +43,29 @@ function LoginScreen(props) {
                 />
             </View>
             <View style={styles.heading}>
-                <Text style={styles.header}>Log In</Text>
+                <Text style={styles.header}>Sign Up</Text>
 
                 <Text style={styles.subtitle}>
-                    Welcome back. You have been missed!
+                    Welcome. Start trading old books!
                 </Text>
             </View>
             <AppForm
-                initialValues={{ email: '', password: '' }}
+                initialValues={{
+                    fullName: '',
+                    email: '',
+                    password: '',
+                    confirmPassword: '',
+                }}
                 onSubmit={(values) => console.log(values)}
                 validationSchema={validationSchema}
             >
+                <AppFormField
+                    name="fullname"
+                    autoCorrect={false}
+                    icon="account"
+                    placeholder="Full Name"
+                    focus
+                />
                 <AppFormField
                     name="email"
                     autoCapitalize="none"
@@ -68,13 +85,24 @@ function LoginScreen(props) {
                     placeholder="Password"
                     textContentType="password"
                 />
-                <SubmitButton title="Log In" />
+                <AppFormField
+                    name="confirmPassword"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    icon="lock"
+                    secureTextEntry={true}
+                    placeholder="Confirm Password"
+                    textContentType="password"
+                />
+                <SubmitButton title="Sign Up" color={colors.secondary} />
                 <View style={styles.subtitleContainer}>
-                    <Text style={styles.subtitle}>Don't have an account?</Text>
+                    <Text style={styles.subtitle}>
+                        Already have an account?
+                    </Text>
                     <TouchableOpacity
                         onPress={() => console.log('Sign up pressed')}
                     >
-                        <Text style={styles.signup}>Sign up</Text>
+                        <Text style={styles.signup}>Log in</Text>
                     </TouchableOpacity>
                 </View>
             </AppForm>
@@ -123,4 +151,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default LoginScreen;
+export default SignupScreen;
