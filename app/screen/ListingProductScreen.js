@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { ImageBackground } from 'react-native';
 import * as Yup from 'yup';
 import Screen from '../components/Screen';
+import FormImagePicker from '../components/form/FormImagePicker';
 import colors from '../config/colors';
 
 const screenHeight = Dimensions.get('window').height;
@@ -19,6 +20,7 @@ const validationSchema = Yup.object().shape({
     writer: Yup.string().required().min(1).label('Writer'),
     price: Yup.number().required().min(1).max(10000).label('Price'),
     description: Yup.string().label('Description'),
+    images: Yup.array().min(1, 'Please add at least 1 image.'),
 });
 
 const genres = [
@@ -63,10 +65,12 @@ function ListingProductScreen(props) {
                         writer: '',
                         price: '',
                         description: '',
+                        images: [],
                     }}
                     onSubmit={(values) => console.log(values)}
                     validationSchema={validationSchema}
                 >
+                    <FormImagePicker name="images" />
                     <AppFormField name="title" placeholder="Title" />
                     <AppFormField name="writer" placeholder="Writer" />
                     <AppPicker

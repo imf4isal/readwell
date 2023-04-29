@@ -1,20 +1,9 @@
 import { StyleSheet } from 'react-native';
 
-import { useState } from 'react';
-import ImageInput from './app/components/ImageInput';
-import Screen from './app/components/Screen';
+import ListingProductScreen from './app/screen/ListingProductScreen';
 
 export default function App() {
-    const [imageUri, setImageUri] = useState();
-
-    return (
-        <Screen>
-            <ImageInput
-                image={imageUri}
-                onChangeImage={(uri) => setImageUri(uri)}
-            />
-        </Screen>
-    );
+    return <ListingProductScreen />;
 }
 
 const styles = StyleSheet.create({});
