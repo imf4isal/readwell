@@ -2,7 +2,7 @@ import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
 import AppButton from '../components/AppButton';
 import colors from '../config/colors';
 
-function WelcomeScreen(props) {
+function WelcomeScreen({ navigation }) {
     return (
         <ImageBackground
             source={require('../assets/background-welcome.jpg')}
@@ -22,12 +22,14 @@ function WelcomeScreen(props) {
                     color={colors.primary}
                     textColor={colors.light}
                     border={colors.primaryC}
+                    onPress={() => navigation.navigate('Login')}
                 />
                 <AppButton
                     title="SIGN UP"
                     color={colors.secondary}
                     textColor={colors.light}
                     border={colors.secondaryC}
+                    onPress={() => navigation.navigate('Signup')}
                 />
             </View>
         </ImageBackground>

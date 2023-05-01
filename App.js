@@ -1,9 +1,11 @@
-import { StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
-import ListingProductScreen from './app/screen/ListingProductScreen';
+import AuthNavigator from './app/navigation/AuthNavigator';
 
 export default function App() {
-    return <ListingProductScreen />;
+    return (
+        <NavigationContainer>
+            <AuthNavigator />
+        </NavigationContainer>
+    );
 }
-
-const styles = StyleSheet.create({});

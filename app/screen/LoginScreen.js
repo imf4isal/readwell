@@ -11,6 +11,7 @@ import AppForm from '../components/form/AppForm';
 import AppFormField from '../components/form/AppFormField';
 import SubmitButton from '../components/form/SubmitButton';
 
+import { useNavigation } from '@react-navigation/native';
 import { ImageBackground } from 'react-native';
 import * as Yup from 'yup';
 import colors from '../config/colors';
@@ -24,6 +25,8 @@ const validationSchema = Yup.object().shape({
 });
 
 function LoginScreen(props) {
+    const navigator = useNavigation();
+
     return (
         <ImageBackground
             source={require('../assets/loginback.png')}
@@ -72,7 +75,7 @@ function LoginScreen(props) {
                 <View style={styles.subtitleContainer}>
                     <Text style={styles.subtitle}>Don't have an account?</Text>
                     <TouchableOpacity
-                        onPress={() => console.log('Sign up pressed')}
+                        onPress={() => navigator.navigate('Signup')}
                     >
                         <Text style={styles.signup}>Sign up</Text>
                     </TouchableOpacity>
@@ -84,8 +87,9 @@ function LoginScreen(props) {
 
 const styles = StyleSheet.create({
     container: {
-        width: screenWidth,
-        height: screenHeight,
+        flex: 1,
+        // width: screenWidth,
+        // height: screenHeight,
         justifyContent: 'center',
         padding: 15,
     },
