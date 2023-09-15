@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image, ImageBackground, StyleSheet, View } from 'react-native';
+import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
+import AppButton from '../components/AppButton';
 import colors from '../config/colors';
 
 function WelcomeScreen(props) {
@@ -13,10 +14,12 @@ function WelcomeScreen(props) {
                     style={styles.logo}
                     source={require('../assets/logo-red.png')}
                 />
-                {/* <Text>Buy and Sell Old Book!</Text> */}
+                <Text style={styles.tagline}>New Homes for Old Books</Text>
             </View>
-            <View style={styles.login}></View>
-            <View style={styles.register}></View>
+            <View style={styles.buttonContainer}>
+                <AppButton title="Login" color="primary" />
+                <AppButton title="Signup" color="secondary" />
+            </View>
         </ImageBackground>
     );
 }
@@ -26,6 +29,10 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-end',
         alignItems: 'center',
+    },
+    buttonContainer: {
+        width: '100%',
+        paddingHorizontal: 10,
     },
     login: {
         width: '100%',
@@ -40,11 +47,19 @@ const styles = StyleSheet.create({
     logoContainer: {
         position: 'absolute',
         top: 100,
+        alignItems: 'center',
     },
     register: {
         width: '100%',
         height: 70,
         backgroundColor: colors.secondary,
+    },
+    tagline: {
+        letterSpacing: 1.5,
+        fontSize: 16,
+        marginTop: 5,
+        fontWeight: '600',
+        color: '#242424',
     },
 });
 
