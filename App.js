@@ -1,10 +1,10 @@
-import ProductDetailsScreen from './app/screens/ProductDetailsScreen';
+import ListItem from './app/components/ListItem';
 import Screen from './app/screens/Screen';
 
 export default function App() {
     return (
         <Screen>
-            <ProductDetailsScreen />
+            <ListItem title="Faisal Bhai" subTitle="faisalBhai@gmail.com" />
         </Screen>
     );
 }
