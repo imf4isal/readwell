@@ -3,14 +3,14 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
 import { View } from 'react-native';
 
-function Icon({ name, bg = 'black', color = 'white', size = 50 }) {
+function Icon({ name, backgroundColor = 'black', color = 'white', size = 50 }) {
     return (
         <View
             style={{
                 height: size,
                 width: size,
                 borderRadius: size / 2,
-                backgroundColor: bg,
+                backgroundColor,
                 justifyContent: 'center',
                 alignItems: 'center',
                 elevation: 10,

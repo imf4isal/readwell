@@ -6,12 +6,7 @@ function ListItem({ title, subTitle, image, IconComponent }) {
         <View style={styles.container}>
             <View style={styles.imageContainer}>
                 {IconComponent}
-                {image && (
-                    <Image
-                        style={styles.image}
-                        source={require('../assets/people.jpg')}
-                    />
-                )}
+                {image && <Image style={styles.image} source={image} />}
             </View>
             <View style={styles.detailsContainer}>
                 <Text style={styles.title}>{title}</Text>
