@@ -1,5 +1,5 @@
-import MessageScreen from './app/screens/MessageScreen';
+import ProfileScreen from './app/screens/ProfileScreen';
 
 export default function App() {
-    return <MessageScreen />;
+    return <ProfileScreen />;
 }

@@ -1,22 +1,38 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import {
+    Image,
+    StyleSheet,
+    Text,
+    TouchableHighlight,
+    View,
+} from 'react-native';
+import colors from '../config/colors';
 
-function ListItem({ title, subTitle, image, IconComponent }) {
+function ListItem({
+    title,
+    subTitle,
+    image,
+    IconComponent,
+    onPress,
+    renderRightActions,
+}) {
     return (
-        <View style={styles.container}>
-            <View style={styles.imageContainer}>
-                {IconComponent}
-                {image && <Image style={styles.image} source={image} />}
+        <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
+            <View style={styles.container}>
+                <View style={styles.imageContainer}>
+                    {IconComponent}
+                    {image && <Image style={styles.image} source={image} />}
+                </View>
+                <View style={styles.detailsContainer}>
+                    <Text style={styles.title}>{title}</Text>
+                    {subTitle && (
+                        <Text style={styles.subTitle} numberOfLines={1}>
+                            {subTitle}
+                        </Text>
+                    )}
+                </View>
             </View>
-            <View style={styles.detailsContainer}>
-                <Text style={styles.title}>{title}</Text>
-                {subTitle && (
-                    <Text style={styles.subTitle} numberOfLines={2}>
-                        {subTitle}
-                    </Text>
-                )}
-            </View>
-        </View>
+        </TouchableHighlight>
     );
 }
 
