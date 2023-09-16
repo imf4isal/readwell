@@ -1,14 +1,17 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 
-function ListItem({ title, subTitle }) {
+function ListItem({ title, subTitle, image, IconComponent }) {
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>
-                <Image
-                    style={styles.image}
-                    source={require('../assets/people.jpg')}
-                />
+                {IconComponent}
+                {image && (
+                    <Image
+                        style={styles.image}
+                        source={require('../assets/people.jpg')}
+                    />
+                )}
             </View>
             <View style={styles.detailsContainer}>
                 <Text style={styles.title}>{title}</Text>
