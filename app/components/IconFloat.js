@@ -6,7 +6,7 @@ function IconFloat({
     backgroundColor,
     color = 'white',
     name,
-    size = 30,
+    size = 35,
     position,
 }) {
     return (

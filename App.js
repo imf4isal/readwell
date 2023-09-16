@@ -1,5 +1,5 @@
-import ProfileScreen from './app/screens/ProfileScreen';
+import ProductImageScreen from './app/screens/ProductImageScreen';
 
 export default function App() {
-    return <ProfileScreen />;
+    return <ProductImageScreen />;
 }
