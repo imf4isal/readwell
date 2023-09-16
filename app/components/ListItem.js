@@ -8,6 +8,11 @@ import {
 } from 'react-native';
 import colors from '../config/colors';
 
+import {
+    GestureHandlerRootView,
+    Swipeable,
+} from 'react-native-gesture-handler';
+
 function ListItem({
     title,
     subTitle,
@@ -17,22 +22,31 @@ function ListItem({
     renderRightActions,
 }) {
     return (
-        <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
-            <View style={styles.container}>
-                <View style={styles.imageContainer}>
-                    {IconComponent}
-                    {image && <Image style={styles.image} source={image} />}
-                </View>
-                <View style={styles.detailsContainer}>
-                    <Text style={styles.title}>{title}</Text>
-                    {subTitle && (
-                        <Text style={styles.subTitle} numberOfLines={1}>
-                            {subTitle}
-                        </Text>
-                    )}
-                </View>
-            </View>
-        </TouchableHighlight>
+        <GestureHandlerRootView>
+            <Swipeable renderRightActions={renderRightActions}>
+                <TouchableHighlight
+                    underlayColor={colors.light}
+                    onPress={onPress}
+                >
+                    <View style={styles.container}>
+                        <View style={styles.imageContainer}>
+                            {IconComponent}
+                            {image && (
+                                <Image style={styles.image} source={image} />
+                            )}
+                        </View>
+                        <View style={styles.detailsContainer}>
+                            <Text style={styles.title}>{title}</Text>
+                            {subTitle && (
+                                <Text style={styles.subTitle} numberOfLines={1}>
+                                    {subTitle}
+                                </Text>
+                            )}
+                        </View>
+                    </View>
+                </TouchableHighlight>
+            </Swipeable>
+        </GestureHandlerRootView>
     );
 }
 
