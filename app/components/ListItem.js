@@ -10,7 +10,11 @@ function ListItem({ title, subTitle, image, IconComponent }) {
             </View>
             <View style={styles.detailsContainer}>
                 <Text style={styles.title}>{title}</Text>
-                {subTitle && <Text style={styles.subTitle}>{subTitle}</Text>}
+                {subTitle && (
+                    <Text style={styles.subTitle} numberOfLines={2}>
+                        {subTitle}
+                    </Text>
+                )}
             </View>
         </View>
     );
@@ -22,7 +26,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 15,
     },
-    detailsContainer: { marginLeft: 15 },
+    detailsContainer: { flex: 1, marginLeft: 15 },
     image: {
         height: 70,
         width: 70,

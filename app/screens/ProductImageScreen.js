@@ -1,4 +1,4 @@
-import { Image, StatusBar, StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 
 import IconFloat from '../components/IconFloat';
 import colors from '../config/colors';
@@ -6,7 +6,7 @@ import colors from '../config/colors';
 function ProductImageScreen(props) {
     return (
         <View style={styles.container}>
-            <StatusBar barStyle="light-content" />
+            {/* <StatusBar barStyle="light-content" /> */}
             <IconFloat
                 color={colors.primaryC}
                 name="trash-can"
