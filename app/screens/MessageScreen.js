@@ -28,8 +28,37 @@ const initialMessages = [
     },
 ];
 
+const refreshedMessage = [
+    {
+        id: 1,
+        title: 'Faisal Bhai',
+        description: 'Hey, man. just got your book. super glad!',
+        image: require('../assets/people.jpg'),
+    },
+    {
+        id: 2,
+        title: 'Jenny Doe',
+        description: 'saw your book today, wanna talk about sale?',
+        image: require('../assets/people1.jpg'),
+    },
+    {
+        id: 3,
+        title: 'John R',
+        description: 'here is my email: faisalabdullah@gmail.com',
+        image: require('../assets/people2.jpg'),
+    },
+    {
+        id: 4,
+        title: 'Sadman Asif',
+        description:
+            'sorry, cant give this at this price. if you can reconsider, contact again.',
+        image: require('../assets/people3.jpg'),
+    },
+];
+
 function MessageScreen(props) {
     const [messages, setMessages] = useState(initialMessages);
+    const [refreshing, setRefreshing] = useState(false);
 
     const handleDelete = (item) =>
         setMessages(messages.filter((msg) => item.id !== msg.id));
@@ -52,6 +81,12 @@ function MessageScreen(props) {
                     />
                 )}
                 ItemSeparatorComponent={ListItemSeparator}
+                refreshing={refreshing}
+                onRefresh={() => {
+                    //temporary
+
+                    setMessages(refreshedMessage);
+                }}
             />
         </Screen>
     );
