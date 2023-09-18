@@ -2,11 +2,11 @@ import React from 'react';
 import { StyleSheet, Text, TouchableHighlight } from 'react-native';
 import colors from '../config/colors';
 
-function AppButton({ title, color, onPress, hoverColor }) {
+function AppButton({ title, color, onPress, hoverColor, style }) {
     return (
         <TouchableHighlight
             onPress={onPress}
-            style={[styles.button, { backgroundColor: colors[color] }]}
+            style={[styles.button, { backgroundColor: colors[color] }, style]}
             underlayColor={colors[hoverColor]}
         >
             <Text style={styles.buttonTitle}>{title}</Text>
