@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 
-import { FlatList } from 'react-native';
+import { Alert, Button, FlatList } from 'react-native';
 import ListItem from '../components/ListItem';
 import ListItemDeleteAction from '../components/ListItemDeleteAction';
 import ListItemSeparator from '../components/ListItemSeparator';
+import colors from '../config/colors';
 import Screen from './Screen';
 
 const initialNotification = [
@@ -60,8 +61,35 @@ function NotificationScreen(props) {
         setNotifications(notifications.filter((n) => n.id !== item.id));
     };
 
+    const handleClear = () => {
+        Alert.alert(
+            'clear all notification',
+            'Are you sure you want to clear all notifications at once?',
+            [
+                {
+                    text: 'cancel',
+                    onPress: () => {},
+                    style: 'cancel',
+                },
+                {
+                    text: 'yes',
+                    onPress: () => {
+                        setNotifications([]);
+                    },
+                },
+            ]
+        );
+    };
+
     return (
         <Screen>
+            {notifications.length > 0 && (
+                <Button
+                    onPress={handleClear}
+                    title="clear all notification"
+                    color={colors.primaryC}
+                />
+            )}
             <FlatList
                 data={notifications}
                 keyExtractor={(notification) => notification.id.toString()}
