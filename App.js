@@ -1,5 +1,5 @@
-import SignupScreen from './app/screens/SignupScreen';
+import NotificationScreen from './app/screens/NotificationScreen';
 
 export default function App() {
-    return <SignupScreen />;
+    return <NotificationScreen />;
 }
