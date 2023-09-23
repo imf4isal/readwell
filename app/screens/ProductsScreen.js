@@ -49,7 +49,7 @@ function ProductsScreen(props) {
                 renderItem={({ item }) => (
                     <Card
                         title={item.title}
-                        subtitle={item.price}
+                        subtitle={`${item.price} BDT`}
                         image={item.image}
                     />
                 )}
