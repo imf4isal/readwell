@@ -1,5 +1,10 @@
-import ListingProductScreen from './app/screens/ListingProductScreen';
+import ImageInput from './app/components/ImageInput';
+import Screen from './app/screens/Screen';
 
 export default function App() {
-    return <ListingProductScreen />;
+    return (
+        <Screen>
+            <ImageInput />
+        </Screen>
+    );
 }
