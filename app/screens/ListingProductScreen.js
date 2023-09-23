@@ -10,6 +10,7 @@ import * as Yup from 'yup';
 import Screen from './Screen';
 
 import AppPicker from '../components/AppPicker';
+import FormImagePicker from '../components/form/FormImagePicker';
 import colors from '../config/colors';
 
 const screenHeight = Dimensions.get('window').height;
@@ -20,6 +21,7 @@ const validationSchema = Yup.object().shape({
     writer: Yup.string().required().min(1).label('Writer'),
     price: Yup.number().required().min(1).max(10000).label('Price'),
     description: Yup.string().label('Description'),
+    images: Yup.array().min(1, 'Please add at least 1 image.'),
 });
 
 const genres = [
@@ -64,6 +66,7 @@ function ListingProductScreen(props) {
                         writer: '',
                         price: '',
                         description: '',
+                        images: [],
                     }}
                     onSubmit={(values) => console.log(values)}
                     validationSchema={validationSchema}
@@ -91,6 +94,7 @@ function ListingProductScreen(props) {
                         numberOfLines={3}
                         placeholder="Description"
                     />
+                    <FormImagePicker name="images" />
                     <SubmitButton
                         title="add book"
                         color="secondary"
