@@ -1,10 +1,10 @@
-import ListingProductScreen from './app/screens/ListingProductScreen';
-import Screen from './app/screens/Screen';
+import { NavigationContainer } from '@react-navigation/native';
+import AuthNavigator from './app/navigation/AuthNavigator';
 
 export default function App() {
     return (
-        <Screen>
-            <ListingProductScreen />
-        </Screen>
+        <NavigationContainer>
+            <AuthNavigator />
+        </NavigationContainer>
     );
 }

@@ -20,7 +20,7 @@ const validationSchema = Yup.object().shape({
     password: Yup.string().required().min(4).label('Password'),
 });
 
-function LoginScreen(props) {
+function LoginScreen({ navigation }) {
     return (
         <ImageBackground
             source={require('../assets/loginback.png')}
@@ -69,7 +69,9 @@ function LoginScreen(props) {
 
                 <View style={styles.subtitleContainer}>
                     <Text style={styles.subtitle}>Don't have an account?</Text>
-                    <TouchableOpacity onPress={() => {}}>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('Signup')}
+                    >
                         <Text style={styles.signup}>Sign up</Text>
                     </TouchableOpacity>
                 </View>
