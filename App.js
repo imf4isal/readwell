@@ -1,5 +1,5 @@
-import NotificationScreen from './app/screens/NotificationScreen';
+import ListingProductScreen from './app/screens/ListingProductScreen';
 
 export default function App() {
-    return <NotificationScreen />;
+    return <ListingProductScreen />;
 }
