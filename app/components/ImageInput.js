@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {
@@ -12,9 +12,7 @@ import {
 import * as ImagePicker from 'expo-image-picker';
 import colors from '../config/colors';
 
-function ImageInput(props) {
-    const [image, setImage] = useState();
-
+function ImageInput({ image, onChangeImage }) {
     const reqPermission = async () => {
         const result = await ImagePicker.requestCameraPermissionsAsync();
 
@@ -32,7 +30,7 @@ function ImageInput(props) {
                 mediaTypes: ImagePicker.MediaTypeOptions.Images,
                 quality: 0.9,
             });
-            if (!result.canceled) setImage(result.assets[0].uri);
+            if (!result.canceled) onChangeImage(result.assets[0].uri);
         } catch (error) {
             console.log('error reading a image.');
         }
@@ -42,7 +40,7 @@ function ImageInput(props) {
         if (!image) selectImage();
         else
             Alert.alert('Delete', 'Are you sure you wanna delete this image?', [
-                { text: 'Yes', onPress: () => setImage(null) },
+                { text: 'Yes', onPress: () => onChangeImage(null) },
                 { text: 'No' },
             ]);
     };
