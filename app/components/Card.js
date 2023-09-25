@@ -1,43 +1,53 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import {
+    Image,
+    StyleSheet,
+    Text,
+    TouchableWithoutFeedback,
+    View,
+} from 'react-native';
 import colors from '../config/colors';
 
-function Card({ title, subtitle, image }) {
+function Card({ title, subtitle, image, onPress }) {
     return (
-        <View style={styles.card}>
-            <Image style={styles.image} source={image} />
-            <View style={styles.details}>
-                <Text style={styles.title}>{title}</Text>
-                <Text style={styles.subtitle}>{subtitle}</Text>
+        <TouchableWithoutFeedback onPress={onPress}>
+            <View style={styles.card}>
+                <Image style={styles.image} source={image} />
+                <View style={styles.detailsContainer}>
+                    <Text style={styles.title} numberOfLines={1}>
+                        {title}
+                    </Text>
+                    <Text style={styles.subTitle} numberOfLines={2}>
+                        {subtitle}
+                    </Text>
+                </View>
             </View>
-        </View>
+        </TouchableWithoutFeedback>
     );
 }
 
 const styles = StyleSheet.create({
     card: {
-        width: '100%',
-        height: 300,
-        backgroundColor: 'white',
-        borderRadius: 5,
+        borderRadius: 15,
+        backgroundColor: colors.white,
+        marginBottom: 20,
         overflow: 'hidden',
-        marginBottom: 25,
-        elevation: 5,
+        elevation: 3,
     },
-    details: {
-        padding: 10,
-    },
-    title: {
-        fontSize: 18,
-        marginBottom: 5,
-        color: '#242424',
-    },
-    subtitle: {
-        color: colors.secondary,
+    detailsContainer: {
+        padding: 20,
     },
     image: {
         width: '100%',
-        height: 225,
+        height: 200,
+    },
+    subTitle: {
+        color: colors.secondary,
+        fontWeight: 'bold',
+    },
+    title: {
+        marginBottom: 7,
+        fontSize: 18,
     },
 });
 

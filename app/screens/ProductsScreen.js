@@ -1,6 +1,8 @@
 import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
+
 import Card from '../components/Card';
+import Screen from '../screens/Screen';
 
 const items = [
     {
@@ -41,20 +43,34 @@ const items = [
 ];
 
 function ProductsScreen(props) {
+    // const [listings, setListings] = useState([]);
+
+    // useEffect(() => {
+    //     loadListings();
+    // }, []);
+
+    // const loadListings = async () => {
+    //     const response = await listingsAPI.getListings();
+    //     setListings(response.data);
+    //     console.log(response.data);
+    // };
+
     return (
-        <View style={styles.container}>
-            <FlatList
-                data={items}
-                keyExtractor={items.id}
-                renderItem={({ item }) => (
-                    <Card
-                        title={item.title}
-                        subtitle={`${item.price} BDT`}
-                        image={item.image}
-                    />
-                )}
-            />
-        </View>
+        <Screen>
+            <View style={styles.container}>
+                <FlatList
+                    data={items}
+                    keyExtractor={(listing) => listing.id.toString()}
+                    renderItem={({ item }) => (
+                        <Card
+                            title={item.title}
+                            subtitle={`${item.price} BDT`}
+                            image={item.image}
+                        />
+                    )}
+                />
+            </View>
+        </Screen>
     );
 }
 
