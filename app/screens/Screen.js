@@ -1,13 +1,20 @@
 import React from 'react';
-import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
+import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
 
-function Screen({ children }) {
-    return <SafeAreaView style={styles.container}>{children}</SafeAreaView>;
+function Screen({ children, style }) {
+    return (
+        <SafeAreaView style={[styles.screen, style]}>
+            <View style={[styles.view, style]}>{children}</View>
+        </SafeAreaView>
+    );
 }
 
 const styles = StyleSheet.create({
-    container: {
+    screen: {
         paddingTop: StatusBar.currentHeight,
+        flex: 1,
+    },
+    view: {
         flex: 1,
     },
 });
