@@ -1,7 +1,8 @@
 import React from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 
 import Card from '../components/Card';
+import colors from '../config/colors';
 import Screen from '../screens/Screen';
 
 const items = [
@@ -42,7 +43,7 @@ const items = [
     },
 ];
 
-function ProductsScreen(props) {
+function ProductsScreen({ navigation }) {
     // const [listings, setListings] = useState([]);
 
     // useEffect(() => {
@@ -56,27 +57,30 @@ function ProductsScreen(props) {
     // };
 
     return (
-        <Screen>
-            <View style={styles.container}>
-                <FlatList
-                    data={items}
-                    keyExtractor={(listing) => listing.id.toString()}
-                    renderItem={({ item }) => (
-                        <Card
-                            title={item.title}
-                            subtitle={`${item.price} BDT`}
-                            image={item.image}
-                        />
-                    )}
-                />
-            </View>
+        <Screen style={styles.screen}>
+            <FlatList
+                data={items}
+                keyExtractor={(listing) => listing.id.toString()}
+                renderItem={({ item }) => (
+                    <Card
+                        title={item.title}
+                        subtitle={`${item.price} BDT`}
+                        image={item.image}
+                        onPress={() =>
+                            // navigation.navigate(routes.LISTING_DETAILS, item)
+                            {}
+                        }
+                    />
+                )}
+            />
         </Screen>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        padding: 20,
+    screen: {
+        padding: 10,
+        backgroundColor: colors.light,
     },
 });
 
