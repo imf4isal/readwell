@@ -3,16 +3,15 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 import ListItem from '../components/ListItem';
 import colors from '../config/colors';
 
-function ProductDetailsScreen(props) {
+function ProductDetailsScreen({ route }) {
+    const book = route.params;
+
     return (
         <View>
-            <Image
-                style={styles.image}
-                source={require('../assets/atomichabit.jpg')}
-            />
+            <Image style={styles.image} source={book.image} />
             <View style={styles.details}>
-                <Text style={styles.title}>Atomic Habit</Text>
-                <Text style={styles.subTitle}>100 BDT</Text>
+                <Text style={styles.title}>{book.title}</Text>
+                <Text style={styles.subTitle}>{book.price} BDT</Text>
             </View>
             <View style={styles.user}>
                 <ListItem

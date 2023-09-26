@@ -1,10 +1,13 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import colors from '../config/colors';
-import ProfileNavigator from '../navigation/ProfileNavigator';
+
 import ListingProductScreen from '../screens/ListingProductScreen';
-import ProductsScreen from '../screens/ProductsScreen';
+
 import AddItemNavigation from './AddItemNavigation';
+import ProductNavigator from './ProductNavigator';
+import ProfileNavigator from './ProfileNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -19,7 +22,7 @@ function AppNavigator(props) {
         >
             <Tab.Screen
                 name="Feed"
-                component={ProductsScreen}
+                component={ProductNavigator}
                 options={{
                     tabBarIcon: ({ focused, size }) => (
                         <MaterialCommunityIcons
