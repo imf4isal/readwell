@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Button, FlatList, StyleSheet, Text } from 'react-native';
 
 import ActivityIndicator from '../components/ActivityIndicator';
@@ -7,6 +7,7 @@ import Screen from '../screens/Screen';
 
 import listingsAPI from '../api/listings';
 import Card from '../components/Card';
+import useAPI from '../hooks/useAPI';
 
 // const items = [
 //     {
@@ -47,37 +48,23 @@ import Card from '../components/Card';
 // ];
 
 function ProductsScreen({ navigation }) {
-    const [listings, setListings] = useState([]);
-    const [error, setError] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const getListings = useAPI(listingsAPI.getListings);
 
     useEffect(() => {
-        loadListings();
+        getListings.request();
     }, []);
-
-    const loadListings = async () => {
-        setLoading(true);
-        const response = await listingsAPI.getListings();
-        setLoading(false);
-
-        if (!response.ok) return setError(true);
-
-        setError(false);
-        setListings(response.data);
-    };
 
     return (
         <Screen style={styles.screen}>
-            {error && (
+            {getListings.error && (
                 <>
                     <Text> Couldn't fetch books list. </Text>
-                    <Button title="retry" onPress={loadListings} />
+                    <Button title="retry" onPress={getListings.request} />
                 </>
             )}
-            <ActivityIndicator visible={true} />
-            <Text>Test</Text>
+            <ActivityIndicator visible={getListings.loading} />
             <FlatList
-                data={listings}
+                data={getListings.data}
                 keyExtractor={(listing) => listing.id.toString()}
                 renderItem={({ item }) => (
                     <Card
