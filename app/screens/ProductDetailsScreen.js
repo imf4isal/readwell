@@ -17,7 +17,7 @@ function ProductDetailsScreen({ route }) {
                 <ListItem
                     image={require('../assets/people3.jpg')}
                     title="Samir Hassan"
-                    subTitle="3 Listings"
+                    subTitle="3 Books"
                 />
             </View>
         </View>
