@@ -8,9 +8,21 @@ const Stack = createStackNavigator();
 
 function ProductNavigator(props) {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: false,
+            }}
+        >
             <Stack.Screen name="Books" component={ProductsScreen} />
-            <Stack.Screen name="BookDetails" component={ProductDetailsScreen} />
+            <Stack.Screen
+                name="BookDetails"
+                component={ProductDetailsScreen}
+                options={{
+                    presentation: 'modal',
+                    gestureEnabled: true,
+                    gestureResponseDistance: 300,
+                }}
+            />
         </Stack.Navigator>
     );
 }
