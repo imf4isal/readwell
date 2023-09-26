@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import {
-    ActivityIndicator,
-    Button,
-    FlatList,
-    StyleSheet,
-    Text,
-} from 'react-native';
+import { Button, FlatList, StyleSheet, Text } from 'react-native';
 
-import Card from '../components/Card';
+import ActivityIndicator from '../components/ActivityIndicator';
 import colors from '../config/colors';
 import Screen from '../screens/Screen';
 
 import listingsAPI from '../api/listings';
+import Card from '../components/Card';
 
 // const items = [
 //     {
@@ -65,10 +60,7 @@ function ProductsScreen({ navigation }) {
         const response = await listingsAPI.getListings();
         setLoading(false);
 
-        if (!response.ok) {
-            console.log(response.ok);
-            return setError(true);
-        }
+        if (!response.ok) return setError(true);
 
         setError(false);
         setListings(response.data);
@@ -82,7 +74,8 @@ function ProductsScreen({ navigation }) {
                     <Button title="retry" onPress={loadListings} />
                 </>
             )}
-            <ActivityIndicator animating={true} size="large" />
+            <ActivityIndicator visible={true} />
+            <Text>Test</Text>
             <FlatList
                 data={listings}
                 keyExtractor={(listing) => listing.id.toString()}
