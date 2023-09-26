@@ -1,10 +1,10 @@
-import { NavigationContainer } from '@react-navigation/native';
-import AppNavigator from './app/navigation/AppNavigator';
+import ProductDetailsScreen from './app/screens/ProductDetailsScreen';
 
 export default function App() {
     return (
-        <NavigationContainer>
-            <AppNavigator />
-        </NavigationContainer>
+        // <NavigationContainer>
+        //     <AppNavigator />
+        // </NavigationContainer>
+        <ProductDetailsScreen />
     );
 }
