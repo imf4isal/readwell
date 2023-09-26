@@ -14,6 +14,7 @@ const profileMenu = [
     {
         title: 'Messages',
         icon: 'message',
+        targetScreen: 'Message',
     },
     {
         title: 'Added Books',
@@ -21,7 +22,7 @@ const profileMenu = [
     },
 ];
 
-function ProfileScreen(props) {
+function ProfileScreen({ navigation }) {
     return (
         <Screen>
             <View style={styles.section}>
@@ -45,6 +46,9 @@ function ProfileScreen(props) {
                                 />
                             }
                             title={item.title}
+                            onPress={() =>
+                                navigation.navigate(item.targetScreen)
+                            }
                         />
                     )}
                     ItemSeparatorComponent={ListItemSeparator}

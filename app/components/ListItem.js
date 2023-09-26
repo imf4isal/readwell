@@ -14,9 +14,9 @@ import {
 } from 'react-native-gesture-handler';
 
 function ListItem({
+    image,
     title,
     subTitle,
-    image,
     IconComponent,
     onPress,
     renderRightActions,
