@@ -4,7 +4,6 @@ import { FlatList, StyleSheet } from 'react-native';
 import ListItem from '../components/ListItem';
 import ListItemDeleteAction from '../components/ListItemDeleteAction';
 import ListItemSeparator from '../components/ListItemSeparator';
-import Screen from './Screen';
 
 const initialMessages = [
     {
@@ -63,32 +62,30 @@ function MessageScreen(props) {
     const handleDelete = (item) =>
         setMessages(messages.filter((msg) => item.id !== msg.id));
     return (
-        <Screen>
-            <FlatList
-                data={messages}
-                keyExtractor={(msg) => msg.id.toString()}
-                renderItem={({ item }) => (
-                    <ListItem
-                        title={item.title}
-                        subTitle={item.description}
-                        image={item.image}
-                        onPress={() => {}}
-                        renderRightActions={() => (
-                            <ListItemDeleteAction
-                                onPress={() => handleDelete(item)}
-                            />
-                        )}
-                    />
-                )}
-                ItemSeparatorComponent={ListItemSeparator}
-                refreshing={refreshing}
-                onRefresh={() => {
-                    //temporary
+        <FlatList
+            data={messages}
+            keyExtractor={(msg) => msg.id.toString()}
+            renderItem={({ item }) => (
+                <ListItem
+                    title={item.title}
+                    subTitle={item.description}
+                    image={item.image}
+                    onPress={() => {}}
+                    renderRightActions={() => (
+                        <ListItemDeleteAction
+                            onPress={() => handleDelete(item)}
+                        />
+                    )}
+                />
+            )}
+            ItemSeparatorComponent={ListItemSeparator}
+            refreshing={refreshing}
+            onRefresh={() => {
+                //temporary
 
-                    setMessages(refreshedMessage);
-                }}
-            />
-        </Screen>
+                setMessages(refreshedMessage);
+            }}
+        />
     );
 }
 

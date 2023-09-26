@@ -2,21 +2,26 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { View } from 'react-native';
 import colors from '../config/colors';
 
-function AddItemNavigation({ borderColor, size, color }) {
+function AddItemNavigation({ color }) {
     return (
         <View
             style={{
-                height: 36,
-                width: 36,
-                borderRadius: 18,
-                borderWidth: 5,
-                borderColor: borderColor,
-                backgroundColor: colors.light,
-                justifyContent: 'center',
                 alignItems: 'center',
+                backgroundColor: color,
+                borderColor: colors.white,
+                borderRadius: 40,
+                borderWidth: 10,
+                bottom: 20,
+                height: 80,
+                justifyContent: 'center',
+                width: 80,
             }}
         >
-            <MaterialCommunityIcons name="plus" size={size} color={color} />
+            <MaterialCommunityIcons
+                name="plus"
+                size={40}
+                color={colors.white}
+            />
         </View>
     );
 }
