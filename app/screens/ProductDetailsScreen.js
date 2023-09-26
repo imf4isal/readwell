@@ -8,7 +8,7 @@ function ProductDetailsScreen({ route }) {
 
     return (
         <View>
-            <Image style={styles.image} source={book.image} />
+            <Image style={styles.image} source={{ uri: book.images[0].url }} />
             <View style={styles.details}>
                 <Text style={styles.title}>{book.title}</Text>
                 <Text style={styles.subTitle}>{book.price} BDT</Text>
