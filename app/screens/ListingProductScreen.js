@@ -5,7 +5,6 @@ import AppForm from '../components/form/AppForm';
 import AppFormField from '../components/form/AppFormField';
 import SubmitButton from '../components/form/SubmitButton';
 
-import { useState } from 'react';
 import { ImageBackground } from 'react-native';
 import Screen from './Screen';
 
@@ -86,11 +85,10 @@ const categories = [
 ];
 
 function ListingProductScreen(props) {
-    const [category, setCategory] = useState();
-
     const handleSubmit = async (listing) => {
         console.log(listing);
         const result = await listingAPI.addListing(listing);
+        console.log(result);
         if (!result.ok) return alert('Could not upload the book.');
         alert('Successfully uploaded book.');
     };
@@ -116,7 +114,7 @@ function ListingProductScreen(props) {
                         category: null,
                         images: [],
                     }}
-                    onSubmit={(values) => console.log(values)}
+                    onSubmit={handleSubmit}
                     validationSchema={validationSchema}
                 >
                     <FormImagePicker name="images" />
