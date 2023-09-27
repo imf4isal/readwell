@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         marginVertical: 20,
     },
     container: {
-        paddingHorizontal: 7,
+        paddingHorizontal: 5,
     },
 });
 

@@ -1,73 +1,99 @@
-import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
-
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Fragment, useState } from 'react';
-import { Button, FlatList, Modal, Text } from 'react-native';
+import React, { useState } from 'react';
+import {
+    Button,
+    FlatList,
+    Modal,
+    StyleSheet,
+    Text,
+    TouchableWithoutFeedback,
+    View,
+} from 'react-native';
 
+import defaultStyles from '../config/styles';
 import PickerItem from './PickerItem';
 
-import colors from '../config/colors';
-
-function AppPicker({ icon, items, placeholder, onSelect, selectedItem }) {
-    const [visible, setVisible] = useState(false);
+function AppPicker({
+    icon,
+    items,
+    numberOfColumns = 1,
+    onSelectItem,
+    PickerItemComponent = PickerItem,
+    placeholder,
+    selectedItem,
+    width = '100%',
+}) {
+    const [modalVisible, setModalVisible] = useState(false);
 
     return (
-        <Fragment>
-            <TouchableWithoutFeedback onPress={() => setVisible(true)}>
-                <View style={styles.container}>
-                    <MaterialCommunityIcons
-                        name={icon}
-                        size={20}
-                        color="grey"
-                        style={styles.icon}
-                    />
-                    <Text style={styles.text}>
-                        {selectedItem ? selectedItem.title : placeholder}
-                    </Text>
+        <>
+            <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
+                <View style={[styles.container, { width }]}>
+                    {icon && (
+                        <MaterialCommunityIcons
+                            name={icon}
+                            size={20}
+                            color={defaultStyles.colors.medium}
+                            style={styles.icon}
+                        />
+                    )}
+                    {selectedItem ? (
+                        <Text style={styles.text}>{selectedItem.label}</Text>
+                    ) : (
+                        <Text style={styles.placeholder}>{placeholder}</Text>
+                    )}
+
                     <MaterialCommunityIcons
                         name="chevron-down"
                         size={20}
-                        color="grey"
-                        style={styles.icon}
+                        color={defaultStyles.colors.medium}
                     />
                 </View>
             </TouchableWithoutFeedback>
-            <Modal visible={visible} animationType="slide">
-                <Button title="close" onPress={() => setVisible(false)} />
-                <FlatList
-                    data={items}
-                    keyExtractor={(item) => item.id.toString()}
-                    renderItem={({ item }) => (
-                        <PickerItem
-                            title={item.title}
-                            onPress={() => {
-                                setVisible(false);
-                                onSelect(item);
-                            }}
-                        />
-                    )}
-                />
+            <Modal visible={modalVisible} animationType="slide">
+                <>
+                    <Button
+                        title="Close"
+                        onPress={() => setModalVisible(false)}
+                    />
+                    <FlatList
+                        data={items}
+                        keyExtractor={(item) => item.value.toString()}
+                        numColumns={numberOfColumns}
+                        renderItem={({ item }) => (
+                            <PickerItemComponent
+                                item={item}
+                                label={item.label}
+                                onPress={() => {
+                                    setModalVisible(false);
+                                    onSelectItem(item);
+                                }}
+                            />
+                        )}
+                    />
+                </>
             </Modal>
-        </Fragment>
+        </>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
+        backgroundColor: defaultStyles.colors.light,
+        borderRadius: 25,
         flexDirection: 'row',
-        alignItems: 'center',
-        margin: 10,
-        borderRadius: 10,
-        padding: 10,
-        backgroundColor: colors.light,
-        elevation: 10,
+        padding: 15,
+        marginVertical: 10,
     },
     icon: {
         marginRight: 10,
     },
-    text: {
+    placeholder: {
+        color: defaultStyles.colors.grey,
         fontSize: 18,
-        color: 'grey',
+        flex: 1,
+    },
+    text: {
         flex: 1,
     },
 });

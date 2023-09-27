@@ -1,26 +1,24 @@
-import { useState } from 'react';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import React from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import defaultStyles from '../../config/styles';
 
-import colors from '../../config/colors';
-
-function AppTextInput({ icon, ...otherprops }) {
-    const [isFocused, setIsFocused] = useState(false);
-
+function AppTextInput({ icon, width = '100%', ...otherProps }) {
     return (
-        <View style={[styles.container, isFocused && styles.focused]}>
-            <MaterialCommunityIcons
-                name={icon}
-                size={20}
-                color="grey"
-                style={styles.icon}
-            />
+        <View style={[styles.container, { width }]}>
+            {icon && (
+                <MaterialCommunityIcons
+                    name={icon}
+                    size={20}
+                    color={defaultStyles.colors.medium}
+                    style={styles.icon}
+                />
+            )}
             <TextInput
-                style={styles.input}
-                {...otherprops}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
+                placeholderTextColor={defaultStyles.colors.medium}
+                style={defaultStyles.text}
+                {...otherProps}
             />
         </View>
     );
@@ -28,25 +26,15 @@ function AppTextInput({ icon, ...otherprops }) {
 
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center',
-        backgroundColor: colors.light,
-        borderRadius: 5,
-        elevation: 5,
+        backgroundColor: defaultStyles.colors.light,
+        borderRadius: 10,
         flexDirection: 'row',
-        margin: 10,
         padding: 10,
-    },
-    focused: {
-        borderColor: colors.dark,
-        borderWidth: 0.5,
-        elevation: 15,
+        marginVertical: 10,
+        elevation: 3,
     },
     icon: {
         marginRight: 10,
-    },
-    input: {
-        color: 'grey',
-        fontSize: 18,
     },
 });
 

@@ -1,21 +1,17 @@
+import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-function PickerItem({ title, onPress }) {
+function PickerItem({ item, onPress }) {
     return (
-        <TouchableOpacity style={styles.pickerItems} onPress={onPress}>
-            <Text style={styles.item}>{title}</Text>
+        <TouchableOpacity onPress={onPress}>
+            <Text style={styles.text}>{item.label}</Text>
         </TouchableOpacity>
     );
 }
 
 const styles = StyleSheet.create({
-    item: {
-        fontSize: 18,
-        padding: 10,
-    },
-    pickerItems: {
-        alignItems: 'center',
-        marginTop: 20,
+    text: {
+        padding: 20,
     },
 });
 
