@@ -1,7 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
-import AuthContext from '../auth/context';
-import authStorage from '../auth/storage';
+import useAuth from '../auth/useAuth';
 import Icon from '../components/Icon';
 import ListItem from '../components/ListItem';
 import ListItemSeparator from '../components/ListItemSeparator';
@@ -25,12 +24,7 @@ const profileMenu = [
 ];
 
 function ProfileScreen({ navigation }) {
-    const { user, setUser } = useContext(AuthContext);
-
-    const handleLogout = () => {
-        setUser(null);
-        authStorage.removeToken();
-    };
+    const { user, logout } = useAuth();
 
     return (
         <Screen>
@@ -69,7 +63,7 @@ function ProfileScreen({ navigation }) {
                         <Icon name="logout" backgroundColor={colors.primary} />
                     }
                     title="Logout"
-                    onPress={handleLogout}
+                    onPress={() => logout()}
                 />
             </View>
         </Screen>
