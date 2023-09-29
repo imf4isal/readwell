@@ -11,8 +11,12 @@ import * as Yup from 'yup';
 
 import AppForm from '../components/form/AppForm';
 import AppFormField from '../components/form/AppFormField';
+import ErrorMessage from '../components/form/ErrorMessage';
 import SubmitButton from '../components/form/SubmitButton';
 
+import jwtDecode from 'jwt-decode';
+import { useState } from 'react';
+import authApi from '../api/auth';
 import colors from '../config/colors';
 
 const validationSchema = Yup.object().shape({
@@ -21,6 +25,17 @@ const validationSchema = Yup.object().shape({
 });
 
 function LoginScreen({ navigation }) {
+    const [loginFailed, setLoginFailed] = useState(false);
+
+    const handleSubmit = async ({ email, password }) => {
+        const result = await authApi.login(email, password);
+
+        if (!result.ok) return setLoginFailed(true);
+        setLoginFailed(false);
+        const user = jwtDecode(result.data);
+        console.log(user);
+    };
+
     return (
         <ImageBackground
             source={require('../assets/loginback.png')}
@@ -41,11 +56,16 @@ function LoginScreen({ navigation }) {
                     Welcome back. You have been missed!
                 </Text>
             </View>
+
             <AppForm
                 initialValues={{ email: '', password: '' }}
-                onSubmit={(values) => console.log(values)}
+                onSubmit={handleSubmit}
                 validationSchema={validationSchema}
             >
+                <ErrorMessage
+                    error="Invalid email or password."
+                    visible={loginFailed}
+                />
                 <AppFormField
                     name="email"
                     autoCapitalize="none"
