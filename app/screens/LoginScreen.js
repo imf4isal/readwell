@@ -18,6 +18,7 @@ import jwtDecode from 'jwt-decode';
 import { useContext, useState } from 'react';
 import authApi from '../api/auth';
 import AuthContext from '../auth/context';
+import authStorage from '../auth/storage';
 import colors from '../config/colors';
 
 const validationSchema = Yup.object().shape({
@@ -35,6 +36,7 @@ function LoginScreen({ navigation }) {
         if (!result.ok) return setLoginFailed(true);
         setLoginFailed(false);
         const user = jwtDecode(result.data);
+        authStorage.storeToken(result.data);
         authContext.setUser(user);
     };
 
