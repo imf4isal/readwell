@@ -9,10 +9,15 @@ import {
 
 import * as Yup from 'yup';
 
+import userAuth from '../api/users';
 import AppForm from '../components/form/AppForm';
 import AppFormField from '../components/form/AppFormField';
 import SubmitButton from '../components/form/SubmitButton';
 
+import { useState } from 'react';
+import authApi from '../api/auth';
+import useAuth from '../auth/useAuth';
+import ErrorMessage from '../components/form/ErrorMessage';
 import colors from '../config/colors';
 
 const validationSchema = Yup.object().shape({
@@ -26,6 +31,31 @@ const validationSchema = Yup.object().shape({
 });
 
 function SignupScreen({ navigation }) {
+    const auth = useAuth();
+    const [error, setError] = useState();
+
+    const handleSubmit = async (userInfo) => {
+        console.log('anything');
+        console.log(userInfo);
+        const result = await userAuth.register(userInfo);
+
+        if (!result.ok) {
+            if (result.data) setError(result.data.error);
+            else {
+                setError('An unexpected error occurred.');
+                console.log(result);
+            }
+            return;
+        }
+
+        const { data: authToken } = await authApi.login(
+            userInfo.email,
+            userInfo.password
+        );
+
+        auth.login(authToken);
+    };
+
     return (
         <ImageBackground
             source={require('../assets/signupback.png')}
@@ -53,9 +83,10 @@ function SignupScreen({ navigation }) {
                     password: '',
                     confirmPassword: '',
                 }}
-                onSubmit={(values) => console.log(values)}
+                onSubmit={handleSubmit}
                 validationSchema={validationSchema}
             >
+                <ErrorMessage error={error} visible={error} />
                 <AppFormField
                     name="fullname"
                     autoCorrect={false}
