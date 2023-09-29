@@ -24,7 +24,7 @@ const profileMenu = [
 ];
 
 function ProfileScreen({ navigation }) {
-    const { user } = useContext(AuthContext);
+    const { user, setUser } = useContext(AuthContext);
 
     return (
         <Screen>
@@ -63,6 +63,7 @@ function ProfileScreen({ navigation }) {
                         <Icon name="logout" backgroundColor={colors.primary} />
                     }
                     title="Logout"
+                    onPress={() => setUser(null)}
                 />
             </View>
         </Screen>
