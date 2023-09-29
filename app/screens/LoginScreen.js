@@ -15,8 +15,9 @@ import ErrorMessage from '../components/form/ErrorMessage';
 import SubmitButton from '../components/form/SubmitButton';
 
 import jwtDecode from 'jwt-decode';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import authApi from '../api/auth';
+import AuthContext from '../auth/context';
 import colors from '../config/colors';
 
 const validationSchema = Yup.object().shape({
@@ -25,6 +26,7 @@ const validationSchema = Yup.object().shape({
 });
 
 function LoginScreen({ navigation }) {
+    const authContext = useContext(AuthContext);
     const [loginFailed, setLoginFailed] = useState(false);
 
     const handleSubmit = async ({ email, password }) => {
@@ -33,7 +35,7 @@ function LoginScreen({ navigation }) {
         if (!result.ok) return setLoginFailed(true);
         setLoginFailed(false);
         const user = jwtDecode(result.data);
-        console.log(user);
+        authContext.setUser(user);
     };
 
     return (
